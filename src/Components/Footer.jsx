@@ -5,11 +5,3 @@ export default function Footer() {
     </div>
   );
 }
-
-export const additonalJSX = (
-  <div>
-    <p>Well done</p>
-  </div>
-);
-
-export const test = <marquee>Woww</marquee>;

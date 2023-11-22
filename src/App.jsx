@@ -1,61 +1,118 @@
-import { useState } from "react";
 import logo from "/rocket.png";
 import "./App.css";
-import Footer, { additonalJSX, test } from "./Components/Footer.jsx";
-import Button from "react-bootstrap/Button";
+import Header from "./Components/Header.jsx";
+import Footer from "./Components/Footer.jsx";
+import Counter from "./Components/Counter";
+import Form from "./Components/Form";
+import Clock from "./Components/Clock";
+import HighestCount from "./Components/HighestCount.jsx";
+
+import { useState } from "react";
+import { Button, Container, Row, Col } from "react-bootstrap";
+import API from "./Components/API";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const FTBC14Foods = ["rice", "cream puffs", "duck", "fries", "bachormee"];
 
-  console.log("Good morning indra");
-  const classSize = 9;
-  const classFTBC14 = <h1>Hello world welcome {classSize} students</h1>;
-  const classList = (
-    <ol>
-      <li>Indra</li>
-      <li>Ben</li>
-      <li>Jasper</li>
-      <li>Iffah</li>
-      <li>Ester</li>
-      <li>Hongyu</li>
-    </ol>
-  );
-  const styleVariables = {
-    color: "#000",
-    border: "1px solid #fff",
+  const user = {
+    name: "Sam",
+    age: 31,
+    pokemon: "snorlax",
   };
-  const page = (
-    <div style={styleVariables}>
-      {classFTBC14} {classList}
-    </div>
-  );
 
+  const [name, setName] = useState("Sam");
+  const [showCounter, setShowCounter] = useState(true);
+  const [showClock, setShowClock] = useState(true);
+
+  const [counters, setCounters] = useState([
+    { id: 1, count: 0, name: "Sam" },
+    { id: 2, count: 0, name: "Bob" },
+    { id: 3, count: 0, name: "Cherry" },
+    { id: 4, count: 1, name: "Jessica" },
+    { id: 5, count: 0, name: "Keiran" },
+    { id: 6, count: 0, name: "Kyra" },
+  ]);
+
+  const updateCount = (id, sign) => {
+    // logic using ID - works with no red lines
+    const isId = (element) => element.id == id;
+    let index = counters.findIndex(isId);
+
+    console.log(index);
+    console.log(sign);
+
+    const newCounterArray = [...counters];
+
+    if (sign === "+") {
+      let newItem = {
+        id: id,
+        count: counters[index].count + 1,
+        name: counters[index].name,
+      };
+
+      console.log(newItem);
+
+      newCounterArray.splice(index, 1, newItem);
+      setCounters(newCounterArray);
+    } else {
+      let newItem = {
+        id: id,
+        count: counters[index].count - 1,
+        name: counters[index].name,
+      };
+      console.log(newItem);
+
+      newCounterArray.splice(index, 1, newItem);
+      setCounters(newCounterArray);
+    }
+  };
+  counters.sort((a, b) => a.count - b.count);
+
+  const highestCount = counters[counters.length - 1];
   return (
     <>
-      {page}
+      {/* <Button onClick={() => setShowCounter(true)} variant="success">
+        Show Counter
+      </Button>
+      <Button onClick={() => setShowCounter(false)} variant="outline-danger">
+        Hide Counter
+      </Button>
 
-      {2 + 2}
+      {showCounter ? <Counter name={name} /> : null} */}
+
+      {/* Counters real */}
+      {counters && counters.length > 0
+        ? counters.map((counter) => (
+            <Counter
+              key={counter.id}
+              count={counter.count}
+              id={counter.id}
+              updateCount={updateCount}
+              name={counter.name}
+            />
+          ))
+        : null}
+
+      <HighestCount counter={highestCount} />
+
+      <Form />
+      <Header name={name} food={FTBC14Foods} />
       <div>
         <img src={logo} className="logo react" alt="Rocket logo" />
       </div>
-      <h1 style={{ backgroundColor: "#fff", color: "#000" }}>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <Button variant="outline-danger">Click me</Button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-
-      {additonalJSX}
-      {test}
-
       <Footer />
+
+      <Button onClick={() => setShowClock(!showClock)}>Toggle Clock</Button>
+      {showClock ? <Clock timeZone="utc" /> : null}
+
+      <API pokemon="geodude" user={user} />
+
+      <Container>
+        <Row>
+          <Col>1</Col>
+          <Col>2</Col>
+        </Row>
+      </Container>
     </>
   );
 }
