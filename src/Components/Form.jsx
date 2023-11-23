@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Form() {
   const [email, setEmail] = useState("");
+
+  useEffect(() => {
+    console.log(email);
+  }, [email]);
 
   return (
     <div>

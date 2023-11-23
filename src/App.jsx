@@ -10,6 +10,7 @@ import HighestCount from "./Components/HighestCount.jsx";
 import { useState } from "react";
 import { Button, Container, Row, Col } from "react-bootstrap";
 import API from "./Components/API";
+import ComplexForm from "./Components/ComplexForm";
 
 function App() {
   const FTBC14Foods = ["rice", "cream puffs", "duck", "fries", "bachormee"];
@@ -34,7 +35,6 @@ function App() {
   ]);
 
   const updateCount = (id, sign) => {
-    // logic using ID - works with no red lines
     const isId = (element) => element.id == id;
     let index = counters.findIndex(isId);
 
@@ -113,6 +113,8 @@ function App() {
           <Col>2</Col>
         </Row>
       </Container>
+
+      <ComplexForm />
     </>
   );
 }
