@@ -11,6 +11,7 @@ import { useState } from "react";
 import { Button, Container, Row, Col } from "react-bootstrap";
 import API from "./Components/API";
 import ComplexForm from "./Components/ComplexForm";
+import Cards from "./Components/Cards";
 
 function App() {
   const FTBC14Foods = ["rice", "cream puffs", "duck", "fries", "bachormee"];
@@ -71,6 +72,7 @@ function App() {
   const highestCount = counters[counters.length - 1];
   return (
     <>
+      {/* <Cards /> */}
       {/* <Button onClick={() => setShowCounter(true)} variant="success">
         Show Counter
       </Button>
@@ -79,7 +81,6 @@ function App() {
       </Button>
 
       {showCounter ? <Counter name={name} /> : null} */}
-
       {/* Counters real */}
       {counters && counters.length > 0
         ? counters.map((counter) => (
@@ -92,29 +93,23 @@ function App() {
             />
           ))
         : null}
-
       <HighestCount counter={highestCount} />
-
-      <Form />
+      {/* <Form />
       <Header name={name} food={FTBC14Foods} />
       <div>
         <img src={logo} className="logo react" alt="Rocket logo" />
       </div>
       <Footer />
-
       <Button onClick={() => setShowClock(!showClock)}>Toggle Clock</Button>
       {showClock ? <Clock timeZone="utc" /> : null}
-
       <API pokemon="geodude" user={user} />
-
       <Container>
         <Row>
           <Col>1</Col>
           <Col>2</Col>
         </Row>
       </Container>
-
-      <ComplexForm />
+      <ComplexForm /> */}
     </>
   );
 }

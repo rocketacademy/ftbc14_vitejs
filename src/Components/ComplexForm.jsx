@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Form() {
   const [formInformation, setFormInformation] = useState({
@@ -15,10 +15,29 @@ export default function Form() {
     let value = event.target.value;
     console.log(name, value);
 
+    // if (name == "fullName") {
+    //   setFormInformation({
+    //     fullName: value,
+    //     email: formInformation.email,
+    //     age: formInformation.age,
+    //     class: formInformation.class,
+    //   });
+    // }
+
     setFormInformation((prevState) => {
       return { ...prevState, [name]: value };
     });
   };
+
+  // [] empty dependency array = only run on mount
+  useEffect(() => {
+    console.log(formInformation);
+  }, []);
+
+  // [formInformation]  dependency array = only run on formInformation update
+  useEffect(() => {
+    console.log(formInformation);
+  }, [formInformation]);
 
   const [accounts, setAccounts] = useState([]);
 

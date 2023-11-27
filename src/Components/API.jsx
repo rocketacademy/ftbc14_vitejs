@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function API(props) {
-  console.log(props);
+  // console.log(props);
 
   // variable --- updaterFunc --- initial Value
   const [pokemon, setPokemon] = useState([]);
@@ -16,7 +16,7 @@ export default function API(props) {
       let data = await axios.get(
         `https://pokeapi.co/api/v2/pokemon/${props.user.pokemon}`
       );
-      console.log(data);
+      // console.log(data);
       let newPokemon = [...pokemon];
       newPokemon.push(data.data);
       setPokemon(newPokemon);
@@ -26,17 +26,17 @@ export default function API(props) {
   }, []);
 
   useEffect(() => {
-    console.log(pokemon);
+    // console.log(pokemon);
   }, [pokemon]);
 
   const getThatPokemon = () => {
     axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`).then((data) => {
-      console.log(data);
+      // console.log(data);
       let newPokemon = [...pokemon];
       newPokemon.push(data.data);
       setPokemon(newPokemon);
     });
-    console.log("Hi");
+    // console.log("Hi");
   };
 
   return (
