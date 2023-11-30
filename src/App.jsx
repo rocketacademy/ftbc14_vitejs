@@ -13,6 +13,7 @@ import API from "./Components/API";
 import ComplexForm from "./Components/ComplexForm";
 import Cards from "./Components/Cards";
 
+import LocalStorageComponent from "./Components/LocalStorageComponent";
 function App() {
   const FTBC14Foods = ["rice", "cream puffs", "duck", "fries", "bachormee"];
 
@@ -82,7 +83,7 @@ function App() {
 
       {showCounter ? <Counter name={name} /> : null} */}
       {/* Counters real */}
-      {counters && counters.length > 0
+      {/* {counters && counters.length > 0
         ? counters.map((counter) => (
             <Counter
               key={counter.id}
@@ -93,7 +94,7 @@ function App() {
             />
           ))
         : null}
-      <HighestCount counter={highestCount} />
+      <HighestCount counter={highestCount} /> */}
       {/* <Form />
       <Header name={name} food={FTBC14Foods} />
       <div>
@@ -110,6 +111,8 @@ function App() {
         </Row>
       </Container>
       <ComplexForm /> */}
+
+      <LocalStorageComponent />
     </>
   );
 }
