@@ -14,6 +14,7 @@ import ComplexForm from "./Components/ComplexForm";
 import Cards from "./Components/Cards";
 
 import LocalStorageComponent from "./Components/LocalStorageComponent";
+import DisplayStudents from "./Components/DisplayStudents";
 function App() {
   const FTBC14Foods = ["rice", "cream puffs", "duck", "fries", "bachormee"];
 
@@ -113,6 +114,7 @@ function App() {
       <ComplexForm /> */}
 
       <LocalStorageComponent />
+      {/* <DisplayStudents /> */}
     </>
   );
 }

@@ -28,6 +28,7 @@ export default function LocalStorageComponent() {
     ];
     setName("");
     setEmail("");
+    // updating both - localstorage && local/ component state
     setUsers(arrayToStore);
     localStorage.setItem("users", JSON.stringify(arrayToStore));
   };
@@ -43,7 +44,9 @@ export default function LocalStorageComponent() {
     };
     console.log(newItem);
     arrayToStore.splice(index, 1, newItem);
+    // set it into component/ localstate
     setUsers(arrayToStore);
+    // set it into localstorage
     localStorage.setItem("users", JSON.stringify(arrayToStore));
     setEditing(null);
     setName("");
