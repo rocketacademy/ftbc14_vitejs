@@ -1,3 +1,5 @@
+import bin from "./Assets/bin.png";
+
 export default function LocalStorageDisplay(props) {
   return (
     <>
@@ -8,7 +10,12 @@ export default function LocalStorageDisplay(props) {
             <h4>
               {item.name} - {item.email}
             </h4>
-            <button onClick={() => props.deleteItem(item)}>Delete</button>
+            <button
+              style={{ backgroundColor: "#fff" }}
+              onClick={() => props.deleteItem(item)}
+            >
+              <img style={{ height: "25px" }} src={bin} alt="Remove" />
+            </button>
             <button
               onClick={() => {
                 props.setEditing(item);

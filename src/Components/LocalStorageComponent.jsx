@@ -6,6 +6,9 @@ export default function LocalStorageComponent() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [editing, setEditing] = useState(null);
+  const [users, setUsers] = useState(
+    JSON.parse(localStorage.getItem("users")) || []
+  );
 
   const deleteItem = (item) => {
     const arrayToStore = [...users];
@@ -15,10 +18,6 @@ export default function LocalStorageComponent() {
     setUsers(arrayToStore);
     localStorage.setItem("users", JSON.stringify(arrayToStore));
   };
-
-  const [users, setUsers] = useState(
-    JSON.parse(localStorage.getItem("users")) || []
-  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
